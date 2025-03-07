@@ -12,7 +12,7 @@ if not os.path.exists('heart.csv'):
     # Generate static dataset with more entries for age=28 and chol=100
     data = {
         'age': np.concatenate([np.random.randint(20, 80, 990), np.full(10, 28)]),
-        'sex': np.random.randint(0, 2, 1000),
+        'gender': np.random.randint(0, 2, 1000),
         'trestbps': np.random.randint(100, 180, 1000),
         'chol': np.concatenate([np.random.randint(150, 300, 990), np.full(10, 100)]),
         'fbs': np.random.randint(0, 2, 1000),
@@ -35,7 +35,7 @@ print(heartDisease.head())
 # Model Bayesian Network
 Model = BayesianModel([
     ('age', 'trestbps'), ('age', 'fbs'),
-    ('sex', 'trestbps'), ('exang', 'trestbps'),
+    ('gender', 'trestbps'), ('exang', 'trestbps'),
     ('trestbps', 'heartdisease'), ('fbs', 'heartdisease'),
     ('heartdisease', 'restecg'),
     ('heartdisease', 'thalach'),
